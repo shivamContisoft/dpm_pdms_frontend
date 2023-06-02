@@ -1,0 +1,93 @@
+<div fxLayout="row wrap">
+    <div class="overlay">
+        <div class="center twitter-like">
+            <mat-progress-spinner class="background" diameter=75 mode="indeterminate" color="accent" *ngIf="IsWait">
+            </mat-progress-spinner>
+        </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.sm="50" class="flex-p"> 
+        <mat-card class="p-0">        
+            <div class="p-1" fxLayoutAlign="space-between center">
+                <!-- <mat-form-field fxFlex="40">
+                    <input matInput type="text" [(ngModel)]="filterValue" (keyup)="applyFilter()" placeholder="Filter">
+                </mat-form-field>    -->
+                <mat-form-field fxFlex="40">
+                    <mat-select placeholder="Select report type" (selectionChange)="onDropDownChange(reportType.value);" #reportType>
+                        <mat-option value="email">Delivered Emails</mat-option>
+                        <mat-option value="sms">Delivered SMS</mat-option>
+                        <mat-option value="wapp">Delivery WApps</mat-option>
+                    </mat-select>
+                </mat-form-field>       
+            </div>
+            <div class="p-1" fxLayoutAlign="space-between center">
+                <form [formGroup]="filterForm">
+                    <div>
+                        <mat-form-field fxFlex="80">
+                            <input matInput 
+                                [matDatepicker]="fromDate" 
+                                placeholder="From Date" 
+                                formControlName="fromDate" [disabled]="isReportSelected">
+                            <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                            <mat-datepicker #fromDate></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field fxFlex="80">
+                            <input matInput 
+                                [matDatepicker]="toDate" 
+                                placeholder="To Date" 
+                                formControlName="toDate" [disabled]="isReportSelected">
+                            <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+                            <mat-datepicker #toDate></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="80">
+                        <button mat-button class="primary filter-btn" (click)="applyFilter()">Search</button>
+                    </div>
+                    <div fxFlex="80">
+                        <button mat-button class="primary filter-btn" (click)="resetFilter()">Reset</button>
+                    </div>
+                </form>        
+            </div>
+        </mat-card>
+    </div>
+</div>
+<div fxLayout="row wrap">
+    <div fxFlex="100" fxFlex.gt-sm="100" fxFlex.sm="50" class="flex-p">
+        <div *ngIf="dataSource"> 
+            <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="sr_no">
+                    <mat-header-cell *matHeaderCellDef class="mthead">Sr No</mat-header-cell>
+                    <mat-cell *matCellDef="let element; let index = index"> {{index + 1}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="policy_no">
+                    <mat-header-cell *matHeaderCellDef class="mthead">POLICY</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.policy_no}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="member_name">
+                    <mat-header-cell *matHeaderCellDef class="mthead">MEMBER NAME</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.pdms_member?.member_name}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="member_email">
+                    <mat-header-cell *matHeaderCellDef class="mthead">MEMBER EMAIL</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.pdms_member?.member_email}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="member_contact">
+                    <mat-header-cell *matHeaderCellDef class="mthead">MEMBER CONTACT</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.pdms_member?.member_sms_contact}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="created_at">
+                    <mat-header-cell *matHeaderCellDef class="mthead"> TRANSACTION DATE </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.created_at | date: 'dd/MM/yyyy'}}
+                    </mat-cell>
+                </ng-container>
+               
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+        </div>
+
+    </div>
+</div>

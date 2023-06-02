@@ -1,0 +1,49 @@
+<div fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="flex-p">
+        <div fxLayout="row">
+            <mat-card-title class="m-0">
+                <h5>User Details</h5>
+            </mat-card-title>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-button-toggle-group #controls="matButtonToggleGroup" appearance="legacy">
+                <mat-button-toggle value="add" (click)="openUserDialog()" class="headerbtn">
+                    <mat-icon>add</mat-icon> Add
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+    </div>
+
+    <div class="flex-p">
+        <!-- <div fxLayout="column" class="mat-elevation-z8">
+            <mat-form-field class="p-1">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Type to filter all columns">
+            </mat-form-field>
+        </div> -->
+        <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                <mat-cell *matCellDef="let element; let i = index"> {{i+1}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.first_name}} {{element.last_name}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="email_id">
+                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.email_id}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="designation">
+                <mat-header-cell *matHeaderCellDef> Designation </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.designation}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="contact">
+                <mat-header-cell *matHeaderCellDef> Contact </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.contact}} </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    </div>
+</div>

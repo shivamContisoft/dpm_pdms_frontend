@@ -1,0 +1,20 @@
+.filter-btn {
+    color: #fff!important;
+    background: #0277bd!important;
+    margin-top: 10px!important;
+    margin-left: 10px!important;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+:host ::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+    stroke: #ff5722;
+}

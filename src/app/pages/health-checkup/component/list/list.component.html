@@ -1,0 +1,49 @@
+<div fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="flex-p">
+        <div fxLayout="row">
+            <mat-card-title class="m-0">
+                <h5>Health Checkup Details</h5>
+            </mat-card-title>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-button-toggle-group #controls="matButtonToggleGroup" appearance="legacy" style="padding-right:5px">
+                <mat-button-toggle value="add" (click)="SendMessages()" class="headerbtn">
+                    <mat-icon>add</mat-icon> Upload Health Checkup Excel
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+            <mat-button-toggle-group #controls="matButtonToggleGroup" appearance="legacy">
+                <mat-button-toggle value="sample" (click)="sampleDownload()" class="headerbtn">
+                    Sample Download
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+    </div>
+
+    <div class="flex-p">
+        <!-- <div fxLayout="column" class="mat-elevation-z8">
+            <mat-form-field class="p-1">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Type to filter all columns">
+            </mat-form-field>
+        </div> -->
+        <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                <mat-cell *matCellDef="let element; let i = index"> {{i+1}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="file_name">
+                <mat-header-cell *matHeaderCellDef> File Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.file_name}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <span class="material-icons action-icon-edit">download</span>
+                    <span class="material-icons action-icon-delete">delete_sweep</span>
+                </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+            span.material-icons.action-icon-edit {
+                color: #0277bd;
+                margin-right: 10px;
+            }
+            
+            span.material-icons.action-icon-delete {
+                color: #ff3425;
+            }
+            
+            .mat-card-title {
+                color: #fff;
+            }
+            
+            mat-button-toggle.headerbtn {
+                color: #fff!important;
+                font-weight: 600 !important;
+                text-transform: uppercase !important;
+                font-size: 16px !important;
+                background: #0277bd!important;
+            }
+            
+            table {
+                width: 100%;
+            }
+            
+            .mat-elevation-z8 {
+                overflow-x: auto;
+            }
+            
+            .mat-column-position {
+                flex: 0 0 5% !important;
+            }
+            
+            .mat-column-status {
+                flex: 0 0 10% !important;
+            }
+            
+            .mat-column-action {
+                flex: 0 0 15% !important;
+            }
+            
+            .mat-column-title {
+                word-wrap: break-word !important;
+                white-space: unset !important;
+                flex: 0 0 25% !important;
+                width: 25% !important;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                word-break: break-word;
+                -ms-hyphens: auto;
+                -moz-hyphens: auto;
+                -webkit-hyphens: auto;
+                hyphens: auto;
+            }
+            
+            .mat-column-description {
+                word-wrap: break-word !important;
+                white-space: unset !important;
+                flex: 0 0 45% !important;
+                margin-right: 20px;
+                width: 45% !important;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                word-break: break-word;
+                -ms-hyphens: auto;
+                -moz-hyphens: auto;
+                -webkit-hyphens: auto;
+                hyphens: auto;
+            }

@@ -1,0 +1,169 @@
+<!-- <app-info-cards></app-info-cards> -->
+
+<!-- <div fxLayout="row wrap">
+    <div fxFlex="100" fxFlex.gt-sm="45" class="flex-p"> 
+        <app-disk-space></app-disk-space>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="55" class="flex-p">
+        <app-todo></app-todo>
+    </div>
+</div> -->
+
+<div fxLayout="row wrap">
+    <!-- <div fxFlex="100" fxFlex.gt-sm="70" class="flex-p">
+        <app-analytics></app-analytics>
+    </div> -->
+    <div fxFlex="100" fxFlex.gt-sm="100" fxLayout="row">
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <mat-icon class="icon-lg">picture_as_pdf</mat-icon>
+                    <div>
+                        <h1>{{data.totalDocuments}}</h1>
+                        <h2 class="fw-400">Total Policies</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <mat-icon class="icon-lg">person</mat-icon>
+                    <div>
+                        <h1>{{data.totalMembers}}</h1>
+                        <h2 class="fw-400">Total Members</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <mat-icon class="icon-lg">compare_arrows</mat-icon>
+                    <div>
+                        <h1>{{data.deliveredEmails + data.deliveredSms + data.deliveredWapp}}</h1>
+                        <h2 class="fw-400">Total Transactions</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-sm="100" fxLayout="row">
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <mat-icon class="icon-lg">sms </mat-icon>
+                    <div>
+                        <h1>{{data.deliveredSms}} / {{data.bouncedSms}}</h1>
+                        <h2 class="fw-400">Delivered / Undelivered</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <mat-icon class="icon-lg">email</mat-icon>
+                    <div>
+                        <h1>{{data.deliveredEmails}} / {{data.bouncedEmails}}</h1>
+                        <h2 class="fw-400">Delivered / Undelivered</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <img src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/64/social_media_logo_whatsapp-48.png" alt=""
+                    matTooltip="StackOverflow" matTooltipPosition="above">
+                    <div>
+                        <h1>{{data.deliveredWapp}} / {{data.bouncedWapp}}</h1>
+                        <h2 class="fw-400">Delivered / Undelivered</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<div fxLayout="row wrap">
+    <div fxFlex="100" fxFlex.gt-sm="100" class="flex-p">
+        <mat-card class="todays-report">
+            <mat-card-title class="m-0">
+                <h5>Todays Policy Report</h5>
+            </mat-card-title>
+        </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="100" fxLayout="row">
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <mat-icon class="icon-lg">picture_as_pdf</mat-icon>
+                    <div>
+                        <h1>{{todaysData.totalDocuments}}</h1>
+                        <h2 class="fw-400">Total Policies</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <mat-icon class="icon-lg">person</mat-icon>
+                    <div>
+                        <h1>{{todaysData.totalMembers}}</h1>
+                        <h2 class="fw-400">Total Members</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <mat-icon class="icon-lg">compare_arrows</mat-icon>
+                    <div>
+                        <h1>{{todaysData.deliveredEmails + todaysData.deliveredSms + todaysData.deliveredWapp}}</h1>
+                        <h2 class="fw-400">Total Transactions</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <div fxFlex="100" fxFlex.gt-sm="100" fxLayout="row">
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <mat-icon class="icon-lg">sms </mat-icon>
+                    <div>
+                        <h1>{{todaysData.deliveredSms}} / {{todaysData.bouncedSms}}</h1>
+                        <h2 class="fw-400">Delivered / Undelivered</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <mat-icon class="icon-lg">email</mat-icon>
+                    <div>
+                        <h1>{{todaysData.deliveredEmails}} / {{todaysData.bouncedEmails}}</h1>
+                        <h2 class="fw-400">Delivered / Undelivered</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+        <div fxFlex="100" class="flex-p">
+            <mat-card>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="muted-text">
+                    <img src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/64/social_media_logo_whatsapp-48.png" alt=""
+                    matTooltip="StackOverflow" matTooltipPosition="above">
+                    <div>
+                        <h1>{{todaysData.deliveredWapp}} / {{todaysData.bouncedWapp}}</h1>
+                        <h2 class="fw-400">Delivered / Undelivered</h2>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

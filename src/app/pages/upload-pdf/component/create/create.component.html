@@ -1,0 +1,53 @@
+<!-- Progress Bar -->
+<section *ngIf="progress > 0">
+    <mat-progress-bar  [mode]="determinate" [value]="progress">
+    </mat-progress-bar>
+    <div *ngIf="progress != 100" style="position: absolute; padding: 10px; color: white;"> {{progress}}% </div>
+    <div *ngIf="progress == 100" style="position: absolute; padding: 10px; color: white;"> Finishing... </div>
+</section>
+<div class="overlay">
+    <div class="center twitter-like">
+        <mat-progress-spinner class="background" diameter=75 mode="indeterminate" color="accent" *ngIf="IsWait">
+        </mat-progress-spinner>
+    </div>
+</div>
+<div class="upload-document">
+    <form [formGroup]="pdfUpload">
+        <div class="row">
+            <div class="col-md-10 heading">Upload Files</div>
+        </div>
+        <div class="container" novalidate>
+            <div class="row row-space file-upload">
+                <div class="col-md-8 col-8 ">
+                    <input type="text" type="file" id="file" (change)="getFileDetails($event)" multiple required/>
+                </div>
+                <div class="col-md-4 col-4 bottom-btn">
+                    <button mat-button (click)="onSubmit()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="position">
+            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element; let i = index">
+                {{ (paginator.pageIndex * paginator.pageSize) + (i + 1) }}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="file">
+            <mat-header-cell *matHeaderCellDef> File Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+            <mat-cell *matCellDef="let element; let i = index">
+                <span class="material-icons action-icon-delete" (click)="removeSelectedFile(i)">delete_sweep</span>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+</div>

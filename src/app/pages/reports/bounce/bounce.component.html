@@ -1,0 +1,61 @@
+<div fxLayout="column">
+    <div class="flex-p">
+        <div>
+            <mat-card>
+                <!-- <mat-card-header>                
+                    <mat-card-subtitle><h2>Raised Buttons</h2></mat-card-subtitle>
+                </mat-card-header> -->
+                <mat-card-content fxLayoutAlign="end center">
+                    <mat-form-field fxFlex="20">
+                        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+                    </mat-form-field>
+                    <div fxFlex="80" fxLayoutAlign="end center">
+                        <mat-form-field fxFlex="40">
+                            <mat-select placeholder="Select report type" (selectionChange)="onDropDownChange(reportType.value);" #reportType>
+                                <mat-option value="email">Bounced Emails</mat-option>
+                                <mat-option value="sms">Bounced SMS</mat-option>
+                                <mat-option value="wapp">Bounced WApps</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- <div fxFlex="40" fxLayoutAlign="end center">
+                        <button mat-button (click)="ExportTOExcel()">Submit</button>
+                    </div> -->
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="sr_no" >
+                <mat-header-cell *matHeaderCellDef class="mthead">Sr No</mat-header-cell>
+                <mat-cell *matCellDef="let element; let index = index"> {{index + 1}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="policy_no">
+                <mat-header-cell *matHeaderCellDef class="mthead">POLICY</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.policy_no}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="member_name">
+                <mat-header-cell *matHeaderCellDef class="mthead">MEMBER NAME</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.pdms_member.member_name}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="member_email">
+                <mat-header-cell *matHeaderCellDef class="mthead">MEMBER EMAIL</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.pdms_member.member_email}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="member_contact">
+                <mat-header-cell *matHeaderCellDef class="mthead">MEMBER CONTACT</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.pdms_member.member_sms_contact}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="created_at">
+                <mat-header-cell *matHeaderCellDef class="mthead"> TRANSACTION DATE </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.created_at | date}}
+                </mat-cell>
+            </ng-container>
+          
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    </div>
+</div>
