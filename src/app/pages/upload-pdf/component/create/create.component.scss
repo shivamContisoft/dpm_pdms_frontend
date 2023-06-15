@@ -20,6 +20,20 @@ input#file {
     background-size: 45px 46px;
 }
 
+input#new_file{
+
+    vertical-align: middle;
+    display: inline-block;
+    padding: 20px;
+    height: 20px;
+    width: 50%;
+    margin-top: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background-size: 45px 46px;
+}
+
 .center {
     position: absolute;
     top: 50%;

@@ -10,7 +10,7 @@ import { ListComponent } from './component/list/list.component';
 import { EditComponent } from './component/edit/edit.component';
 import { DeleteComponent } from './component/delete/delete.component';
 import { HttpClientModule } from '@angular/common/http';
-
+ 
 
 export const routes = [
   { path: 'list', component: ListComponent, pathMatch: 'full' },

@@ -39,7 +39,7 @@ import { UserMenuComponent } from './theme/components/user-menu/user-menu.compon
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { EditorModule } from '@tinymce/tinymce-angular';
- 
+
 
 @NgModule({
   imports: [

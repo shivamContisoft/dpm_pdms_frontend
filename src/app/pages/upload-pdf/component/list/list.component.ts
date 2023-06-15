@@ -99,4 +99,11 @@ export class ListComponent {
     this.router.navigate(['/uploadpdf/create']);
   }
 
+
+  DownloadFilesDetails(policy_no: any) {
+
+    this.fileUploadService.uploadFilesFromFTPServer(policy_no) 
+
+  }
+  
 }

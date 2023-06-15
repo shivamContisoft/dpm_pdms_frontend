@@ -18,12 +18,15 @@
     <div class="flex-p">
         <div>
             <mat-form-field class="example-chip-list">
-                <input placeholder="Add Policy Number" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+                <input placeholder="Add Policy Number" [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="add($event)">
 
                 <mat-chip-list #chipList>
                 </mat-chip-list>
             </mat-form-field>
-            <mat-chip *ngFor="let policy of policies" [selectable]="selectable" [removable]="removable" (removed)="remove(policy)">
+            <mat-chip *ngFor="let policy of policies" [selectable]="selectable" [removable]="removable"
+                (removed)="remove(policy)">
                 {{policy}}
                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
@@ -31,11 +34,13 @@
         <div class="search">
             <button mat-button (click)="onSearch()" class="searchbtn" style="margin-right: 10px;">
                 Search
-                </button>
-            <button mat-button (click)="onDownload()" class="searchbtn">
-                Download
             </button>
+            <!-- <button mat-button (click)="onDownload()" class="searchbtn">
+                Download
+            </button> -->
         </div>
+
+        <!-- (click)="DownloadFilesDetails(element.policy_no) -->
         <div>
             <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
                 <ng-container matColumnDef="position">
@@ -44,13 +49,17 @@
                 </ng-container>
                 <ng-container matColumnDef="document_name">
                     <mat-header-cell *matHeaderCellDef> Document Name </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.document_name}} </mat-cell>
+                    <mat-cell *matCellDef="let element">{{element.document_name}}  </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="action">
                     <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
                     <mat-cell *matCellDef="let element">
-                        <span class="material-icons action-icon-edit">download</span>
-                        <span class="material-icons action-icon-delete">delete_sweep</span>
+                      
+                        <span class="material-icons action-icon-edit" (click)="DownloadFilesDetails(element.policy_no)">
+
+                              download</span>
+
+                        <!-- <span class="material-icons action-icon-delete">delete_sweep</span> -->
                     </mat-cell>
                 </ng-container>
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

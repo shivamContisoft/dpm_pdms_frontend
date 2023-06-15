@@ -12,7 +12,7 @@ export class FileUploadService {
   constructor(private httpClient: HttpClient) { }
 
   uploadFiles(data): Observable<any> {
-   // return this.httpClient.post(`${environment.api_url}/offlinevideo/create`, data);
+    // return this.httpClient.post(`${environment.api_url}/offlinevideo/create`, data);
     return this.httpClient.post(`${environment.api_url}/document/store`, data, {
       reportProgress: true,
       observe: 'events'
@@ -43,6 +43,23 @@ export class FileUploadService {
     return throwError(errorMessage);
   }
 
-  
+
+  uploadFilesOnFTPServer(path) {
+
+    return this.httpClient.get(`${environment.api_url}/ftp_file/read_docs?path=${path}`)
+
+  }
+
+
+  uploadFilesFromFTPServer(policy_no) {
+
+    window.open(`${environment.api_url}/ftp_file/download_docs?policies=${policy_no}`);
+
+  }
+
+
+
+
+
 
 }

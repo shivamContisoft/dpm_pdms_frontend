@@ -1,6 +1,6 @@
 <!-- Progress Bar -->
 <section *ngIf="progress > 0">
-    <mat-progress-bar  [mode]="determinate" [value]="progress">
+    <mat-progress-bar [mode]="determinate" [value]="progress">
     </mat-progress-bar>
     <div *ngIf="progress != 100" style="position: absolute; padding: 10px; color: white;"> {{progress}}% </div>
     <div *ngIf="progress == 100" style="position: absolute; padding: 10px; color: white;"> Finishing... </div>
@@ -18,11 +18,15 @@
         </div>
         <div class="container" novalidate>
             <div class="row row-space file-upload">
-                <div class="col-md-8 col-8 ">
+                <!-- <div class="col-md-8 col-8 ">
                     <input type="text" type="file" id="file" (change)="getFileDetails($event)" multiple required/>
+                </div> -->
+
+                <div class="col-md-8 col-8 ">
+                    <input type="text" id="new_file" #new_file>
                 </div>
                 <div class="col-md-4 col-4 bottom-btn">
-                    <button mat-button (click)="onSubmit()">Submit</button>
+                    <button mat-button (click)="uploadFilesDetails(new_file.value)">Submit</button>
                 </div>
             </div>
         </div>
@@ -51,3 +55,7 @@
     </mat-table>
     <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
 </div>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale" [fullScreen]="true">
+    <p style="color: white"> File uploading in progress please wait... </p>
+</ngx-spinner>

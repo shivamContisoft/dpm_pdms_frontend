@@ -33,7 +33,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import { FormsModule } from '@angular/forms';
-
+import {NgxSpinnerModule} from 'ngx-spinner';
 @NgModule({
   imports: [
     CommonModule,
@@ -70,7 +70,7 @@ import { FormsModule } from '@angular/forms';
     MatTooltipModule,
     MatStepperModule,
     MatBadgeModule,
-
+    NgxSpinnerModule,
     FormsModule
   ],
   exports: [
@@ -107,7 +107,7 @@ import { FormsModule } from '@angular/forms';
     MatTooltipModule,
     MatStepperModule,
     MatBadgeModule,
-
+    NgxSpinnerModule,
     FormsModule
   ],
   declarations: []
